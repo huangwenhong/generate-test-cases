@@ -64,7 +64,7 @@
       "output": "test-docs/testcases_20260225143022.xmind",
       "case_count": 42,
       "coverage_rate": "100%",
-      "priority_distribution": { "P0": 5, "P1": 16, "P2": 17, "P3": 4 },
+      "priority_distribution": { "P1": 5, "P2": 16, "P3": 17, "P4": 4 },
       "modules": ["用户名密码登录", "手机号验证码登录", "第三方登录"],
       "tag": "C端"
     }
@@ -74,7 +74,7 @@
 
 **自学习规则**：
 - 每次生成后自动写入，积累质量基线
-- 下次生成同类需求时参考历史分布（如 P0 占比偏高则自动提示）
+- 下次生成同类需求时参考历史分布（如 P1 占比偏高则自动提示）
 - 统计常见模块，优化场景覆盖模式
 
 ### user-preferences.json
@@ -88,8 +88,8 @@
   "auto_confirm_parsing": false,
   "ambiguity_handling": "ask | skip | mark",
   "priority_distribution": {
-    "p0_min": 10,
-    "p0_max": 15,
+    "P1_min": 10,
+    "P1_max": 15,
     "warn_on_imbalance": true
   },
   "default_tag": "C端",
@@ -106,7 +106,7 @@
 | `show_samples_in_preview` | 预览时展示样例 |
 | `auto_confirm_parsing` | 自动确认解析结果 |
 | `ambiguity_handling` | 歧义处理策略：`ask` 询问 / `skip` 跳过 / `mark` 标记 |
-| `priority_distribution` | P0 占比偏好 + 失衡警告开关 |
+| `priority_distribution` | P1 占比偏好 + 失衡警告开关 |
 | `default_tag` | 上次选择的标签值，下次可作为默认建议 |
 | `step_granularity` | 用例步骤粒度：`fine` 细化 / `normal` 默认 / `coarse` 粗略 |
 | `title_style` | 用户偏好的用例标题风格（如“输入X，结果Y”），null 表示未设置 |

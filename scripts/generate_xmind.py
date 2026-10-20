@@ -22,7 +22,7 @@ XMind 测试用例生成器
   {
     "模块": ["模块1", "模块2"],          // 必填，数组，支持8层
     "用例标题": "测试用例名称",           // 必填
-    "优先级": "P1",                      // 非必填，P0/P1/P2/P3
+    "优先级": "P1",                      // 非必填，P1/P2/P3/P4
     "前置条件": "已登录系统",            // 非必填
     "步骤": [                            // 必填，至少1步
       {"操作": "步骤描述", "预期": "预期结果"}
@@ -63,6 +63,23 @@ def _ts() -> str:
 
 
 # ── XMind XML 构建 ───────────────────────────────────────────────────────────
+
+def _indent(elem, level=0):
+    """Python 3.8 compatible XML indentation"""
+    i = "\n" + level * "  "
+    if len(elem):
+        if not elem.text or not elem.text.strip():
+            elem.text = i + "  "
+        if not elem.tail or not elem.tail.strip():
+            elem.tail = i
+        for child in elem:
+            _indent(child, level + 1)
+        if not child.tail or not child.tail.strip():
+            child.tail = i
+    else:
+        if level and (not elem.tail or not elem.tail.strip()):
+            elem.tail = i
+
 
 def _make_topic(parent: Element, title: str) -> Element:
     """在 parent 的 children/topics 下创建一个子 topic"""
@@ -114,9 +131,9 @@ def _build_test_case(parent: Element, case: dict):
         return
 
     priority = str(case.get("优先级") or "").strip().upper()
-    # 生成用例节点标题：有优先级时用 tc-p1: 前缀，否则用 tc:
-    if priority in ("P0", "P1", "P2", "P3"):
-        tc_title = f"tc-{priority.lower()}: {title}"
+    # 生成用例节点标题：有优先级时用 tc-p{n}: 前缀，否则用 tc:
+    if priority in ("P0", "P1", "P2", "P3", "P4"):
+        tc_title = f"tc-{priority}: {title}"
     else:
         tc_title = f"tc: {title}"
 
@@ -187,7 +204,7 @@ def build_xmind_content(cases: list, root_title: str = "测试用例") -> bytes:
 
         _build_test_case(parent, case)
 
-    ET.indent(xmap, space="  ")
+    _indent(xmap)
     return ET.tostring(xmap, encoding="unicode", xml_declaration=False).encode("utf-8")
 
 
@@ -204,7 +221,7 @@ def build_manifest() -> bytes:
         "full-path": "META-INF/",
         "media-type": ""
     })
-    ET.indent(manifest, space="  ")
+    _indent(manifest)
     return ET.tostring(manifest, encoding="unicode").encode("utf-8")
 
 

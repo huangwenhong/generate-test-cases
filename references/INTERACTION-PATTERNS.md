@@ -125,7 +125,7 @@ questions:
 #### 歧义过滤
 
 仅询问以下情况：
-- 影响 P0/P1 用例的歧义
+- 影响 P1/P2 用例的歧义
 - 涉及核心业务流程的歧义
 - 可能导致生成错误的关键歧义
 
@@ -142,7 +142,7 @@ questions:
 ## 生成预览
 
 将生成 **{total_cases}** 条用例：
-P0:{p0} | P1:{p1} | P2:{p2} | P3:{p3}
+P1:{P1} | P2:{P2} | P3:{P3} | P4:{P4}
 
 覆盖率: {coverage_rate}%
 ```
@@ -150,12 +150,12 @@ P0:{p0} | P1:{p1} | P2:{p2} | P3:{p3}
 **AskUserQuestion 配置**（仅分布异常时）：
 ```yaml
 questions:
-  - question: "P0比例({p0_percent}%)超出建议范围(10-15%)，是否调整？"
+  - question: "P1比例({P1_percent}%)超出建议范围(10-15%)，是否调整？"
     header: "分布警告"
     multiSelect: false
     options:
       - label: "自动调整到建议范围"
-        description: "将部分 P0 用例降级为 P1"
+        description: "将部分 P1 用例降级为 P2"
       - label: "保持当前分布"
         description: "不做调整，继续生成"
 ```

@@ -24,7 +24,7 @@ DEFAULT_COLUMNS = ['用例编号', '模块名称', '用例标题', '优先级', 
 DEFAULT_WIDTHS = [15, 12, 28, 8, 14, 10, 22, 45, 35, 25, 12, 10, 18]
 
 PRIORITY_COLORS = {
-    'P0': 'FF0000',  # Red
+    'P1': 'FF0000',  # Red
     'P1': 'FF6600',  # Orange
     'P2': 'FFCC00',  # Yellow
     'P3': '99CC00',  # Green
@@ -169,7 +169,7 @@ def add_data_validation(ws, start_row: int, end_row: int, col_index: dict):
     # 优先级下拉
     if '优先级' in col_index:
         priority_col = col_index['优先级']
-        priority_dv = DataValidation(type="list", formula1='"P0,P1,P2,P3"', allow_blank=True)
+        priority_dv = DataValidation(type="list", formula1='"P1,P2,P3,P4"', allow_blank=True)
         priority_dv.error = '请选择有效的优先级'
         priority_dv.errorTitle = '无效输入'
         ws.add_data_validation(priority_dv)
@@ -210,7 +210,7 @@ def apply_priority_colors(ws, start_row: int, end_row: int, col_index: dict):
             cell.fill = PatternFill(start_color=PRIORITY_COLORS[priority],
                                     end_color=PRIORITY_COLORS[priority],
                                     fill_type="solid")
-            if priority in ['P0', 'P1']:
+            if priority in ['P1', 'P2']:
                 cell.font = Font(bold=True, color="FFFFFF")
 
 
@@ -295,7 +295,7 @@ def create_coverage_stats_sheet(wb, data: list, covered_count: int, total_req_co
 
     # 计算统计数据
     total_cases = len(data)
-    priority_counts = {'P0': 0, 'P1': 0, 'P2': 0, 'P3': 0}
+    priority_counts = {'P1': 0, 'P2': 0, 'P3': 0, 'P4': 0}
     regression_counts = {'冒烟': 0, '核心': 0, '全量': 0}
     orphan_count = 0
 
@@ -327,7 +327,7 @@ def create_coverage_stats_sheet(wb, data: list, covered_count: int, total_req_co
         ('覆盖深度', f'{coverage_depth:.2f} 用例/需求'),
         ('孤儿用例数', orphan_count),
         ('', ''),
-        ('P0 用例数', priority_counts['P0']),
+        ('P1 用例数', priority_counts['P1']),
         ('P1 用例数', priority_counts['P1']),
         ('P2 用例数', priority_counts['P2']),
         ('P3 用例数', priority_counts['P3']),

@@ -64,7 +64,7 @@
 | 类型 | 示例 | 处理方式 |
 |------|------|---------|
 | 纠正错误 | "这条用例逻辑不对" | 重新生成 + 记录歧义模式到 `ambiguity-decisions.json` |
-| 删减用例 | "P2 太多了" | 询问"是否调整优先级分布作为默认？"→ 写入 `user-preferences.json` |
+| 删减用例 | "P3 太多了" | 询问"是否调整优先级分布作为默认？"→ 写入 `user-preferences.json` |
 | 补充场景 | "还缺并发场景" | 增补 + 记录为常见遗漏到 `generation-history.json` |
 | 修改标签 | "这个应该是 APP" | 原样更新 `default_tag` |
 | 修改术语 | "这里应该叫 XXX" | 询问"是否记住？"→ 写入 `terminology.json` |

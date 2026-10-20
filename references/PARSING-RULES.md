@@ -311,12 +311,12 @@ Claude 解析需求文档时应按以下顺序执行：
 
 | 类型代码 | 类型名称 | 影响级别 | 处理优先级 |
 |---------|---------|---------|-----------|
-| `BOUNDARY_UNCLEAR` | 边界不明确 | 高 | P0/P1 |
-| `RULE_CONFLICT` | 规则冲突 | 高 | P0/P1 |
-| `MISSING_ERROR` | 缺少错误处理 | 中 | P1/P2 |
-| `VAGUE_CRITERIA` | 模糊验收标准 | 中 | P1/P2 |
-| `INCOMPLETE_FLOW` | 流程不完整 | 中 | P1/P2 |
-| `UNDEFINED_TERM` | 未定义术语 | 低 | P2/P3 |
+| `BOUNDARY_UNCLEAR` | 边界不明确 | 高 | P1/P2 |
+| `RULE_CONFLICT` | 规则冲突 | 高 | P1/P2 |
+| `MISSING_ERROR` | 缺少错误处理 | 中 | P2/P3 |
+| `VAGUE_CRITERIA` | 模糊验收标准 | 中 | P2/P3 |
+| `INCOMPLETE_FLOW` | 流程不完整 | 中 | P2/P3 |
+| `UNDEFINED_TERM` | 未定义术语 | 低 | P3/P4 |
 
 ## 检测模式速查
 

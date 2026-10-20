@@ -49,8 +49,14 @@ def init_memory(project_path: str, template_dir: str = "templates",
             "auto_confirm_parsing": False,
             "ambiguity_handling": "ask",
             "priority_distribution": {
-                "p0_min": 10,
-                "p0_max": 15,
+                "p1_min": 10,
+                "p1_max": 15,
+                "p2_min": 30,
+                "p2_max": 40,
+                "p3_min": 30,
+                "p3_max": 40,
+                "p4_min": 10,
+                "p4_max": 20,
                 "warn_on_imbalance": True
             },
             "updated_at": None
