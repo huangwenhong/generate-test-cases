@@ -1,6 +1,6 @@
 tmp/
 test-docs/
-reqyurenebts/
+requirements/
 .memory/
 .claude/
 scripts/__pycache__/
